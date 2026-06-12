@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" id="metaDesc" content="TOUFIK — Independent artist crafting cinematic emotion through self-engineered sound.">
+    <meta name="theme-color" content="#080808">
+    <title id="pageTitle">T O U F I K — One Man Music Industry</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="preloader" id="preloader">
+        <div class="preloader__name" id="preloaderName">TOUFIK</div>
+        <div class="preloader__bar"></div>
+    </div>
+
+    <div class="particles" id="particles"></div>
+
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <a href="#hero" class="nav__logo" id="navLogo">TOUFIK</a>
+        <ul class="nav__menu">
+            <li><a href="#about"    class="nav__link">About</a></li>
+            <li><a href="#releases" class="nav__link">Music</a></li>
+            <li><a href="#visuals"  class="nav__link">Visuals</a></li>
+            <li><a href="#social"   class="nav__link">Connect</a></li>
+            <li><a href="#contact"  class="nav__link">Contact</a></li>
+        </ul>
+        <button class="nav__burger" id="burger" aria-label="Toggle mobile menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
+        <a href="#about">About</a>
+        <a href="#releases">Music</a>
+        <a href="#visuals">Visuals</a>
+        <a href="#social">Connect</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <section class="hero" id="hero" aria-label="Hero">
+        <div class="hero__bg">
+            <div class="vis-slot" id="heroMedia">
+                <div class="vis-art art--hero"></div>
+            </div>
+        </div>
+        <div class="hero__gradient"></div>
+
+        <div class="hero__content">
+            <div class="hero__topline"></div>
+            <h1 class="hero__name"    id="heroName">T O U F I K</h1>
+            <p  class="hero__tagline" id="heroTagline">One Man Music Industry</p>
+            <p  class="hero__roles">
+                Singer <span>•</span> Rapper <span>•</span> Songwriter
+                <span>•</span> Producer <span>•</span> Audio Engineer
+            </p>
+            <div class="hero__actions">
+                <a href="#releases" class="btn btn--gold">Explore Music</a>
+                <a href="#visuals"  class="btn btn--ghost">Watch Visuals</a>
+                <a href="#contact"  class="btn btn--ghost">Contact</a>
+            </div>
+        </div>
+
+        <div class="hero__eq" id="heroEq" aria-hidden="true"></div>
+
+        <div class="hero__scroll" aria-hidden="true">
+            <span class="hero__scroll-text">Scroll</span>
+            <div class="hero__scroll-line"></div>
+        </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="about" id="about">
+        <div class="container section-pad">
+            <div class="about__grid">
+                <div class="about__image-wrapper reveal">
+                    <div class="about__frame">
+                        <div class="vis-slot" id="aboutPhoto">
+                            <div class="vis-art art--about">
+                                <div class="light-beam" style="left:30%;top:0;height:100%;"></div>
+                                <div class="light-beam" style="left:65%;top:10%;height:80%;opacity:.5;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about__corner about__corner--tl"></div>
+                    <div class="about__corner about__corner--br"></div>
+                </div>
+
+                <div>
+                    <span class="u-label reveal">The Artist</span>
+                    <div  class="u-divider reveal reveal--d1"></div>
+                    <h2   class="about__heading reveal reveal--d2">"One Man. Every Role."</h2>
+                    <p    class="about__text reveal reveal--d3">
+                        I make music the way I feel it — emotional, cinematic, personal, and real.
+                    </p>
+                    <p    class="about__text reveal reveal--d3">
+                        From writing and recording to production, mixing, and visuals, everything is built
+                        independently to create a complete artistic experience.
+                    </p>
+                    <div class="skill-tags reveal reveal--d4" id="skillTags"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="releases" id="releases">
+        <div class="container section-pad">
+            <div style="text-align:center;">
+                <span class="u-label reveal">The Releases</span>
+                <div  class="u-divider reveal reveal--d1" style="margin:0 auto 1.6rem;"></div>
+                <h2   class="u-title reveal reveal--d2">THE RELEASES</h2>
+                <p    class="u-subtitle reveal reveal--d3">"A world behind every sound."</p>
+            </div>
+            <div class="release-list" id="releaseList"></div>
+        </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="visuals" id="visuals">
+        <div class="container section-pad">
+            <div style="text-align:center;">
+                <span class="u-label reveal">The Visuals</span>
+                <div  class="u-divider reveal reveal--d1" style="margin:0 auto 1.6rem;"></div>
+                <h2   class="u-title reveal reveal--d2">VISUAL UNIVERSE</h2>
+                <p    class="u-subtitle reveal reveal--d3">"Every frame tells a story."</p>
+            </div>
+            <div class="gallery-grid reveal reveal--d4" id="gallery"></div>
+        </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="audio-exp" id="audio">
+        <div class="container section-pad">
+            <div class="audio-exp__inner">
+                <span class="u-label reveal">Audio Experience</span>
+                <div  class="u-divider reveal reveal--d1" style="margin:0 auto 1.6rem;"></div>
+                <h2   class="u-title reveal reveal--d2">FEEL THE SOUND</h2>
+                <p    class="u-subtitle reveal reveal--d3">"Close your eyes. Press play."</p>
+                <div  class="audio-exp__wave reveal reveal--d4" id="ambientWave" aria-hidden="true"></div>
+                <div  class="audio-exp__orb  reveal reveal--d5" id="audioOrb" role="button" tabindex="0" aria-label="Play ambient audio">
+                    <span class="audio-exp__icon" id="audioOrbIcon">▶</span>
+                </div>
+                <span class="audio-exp__hint reveal reveal--d5">Tap to Experience</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="social" id="social">
+        <div class="container section-pad">
+            <div class="social__inner">
+                <span class="u-label reveal">Stay Connected</span>
+                <div  class="u-divider reveal reveal--d1" style="margin:0 auto 1.6rem;"></div>
+                <h2   class="u-title reveal reveal--d2">FIND THE ERA</h2>
+                <p    class="u-subtitle reveal reveal--d3">"Enter the universe."</p>
+                <div class="social__grid reveal reveal--d4" id="socialGrid"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="contact" id="contact">
+        <div class="contact__ambient" aria-hidden="true"></div>
+        <div class="container section-pad">
+            <div class="contact__inner">
+
+                <span class="u-label reveal">Get In Touch</span>
+                <div  class="u-divider reveal reveal--d1" style="margin:0 auto 1.6rem;"></div>
+                <h2   class="contact__heading reveal reveal--d2">LET'S BUILD SOMETHING REAL.</h2>
+                <p    class="contact__desc reveal reveal--d3">
+                    Built for emotion, atmosphere, and real connection through sound.<br>
+                    Available for vocal work, songwriting, production, and creative collaborations.
+                </p>
+
+                <div class="contact__services reveal reveal--d4" id="contactServices"></div>
+                <div class="contact__divider reveal reveal--d4"></div>
+
+                <div class="contact__form-wrap reveal reveal--d5">
+                    <form class="form" id="contactForm" novalidate>
+                        <div class="form__field">
+                            <input type="text" class="form__input" id="fName" placeholder=" " required autocomplete="name">
+                            <label for="fName" class="form__label">Your Name</label>
+                        </div>
+                        <div class="form__field">
+                            <input type="email" class="form__input" id="fEmail" placeholder=" " required autocomplete="email">
+                            <label for="fEmail" class="form__label">Your Email</label>
+                        </div>
+                        <div class="form__field">
+                            <select class="form__select" id="fService" required>
+                                <option value="" disabled selected>Select Service</option>
+                                <option value="Vocal Performance">Vocal Performance</option>
+                                <option value="Rap Vocals">Rap Vocals</option>
+                                <option value="Songwriting">Songwriting</option>
+                                <option value="Music Production">Music Production</option>
+                                <option value="Audio Engineering">Audio Engineering</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form__reveal" id="serviceReveal">
+                            <div class="form__field">
+                                <input type="text" class="form__input" id="fServiceCustom" placeholder=" ">
+                                <label for="fServiceCustom" class="form__label">Custom Service Request</label>
+                            </div>
+                        </div>
+                        <div class="form__field">
+                            <select class="form__select" id="fInquiry" required>
+                                <option value="" disabled selected>Select Inquiry Type</option>
+                                <option value="Collaboration">Collaboration</option>
+                                <option value="Feature Request">Feature Request</option>
+                                <option value="Business Inquiry">Business Inquiry</option>
+                                <option value="Music Inquiry">Music Inquiry</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form__reveal" id="inquiryReveal">
+                            <div class="form__field">
+                                <input type="text" class="form__input" id="fInquiryCustom" placeholder=" ">
+                                <label for="fInquiryCustom" class="form__label">Custom Inquiry Type</label>
+                            </div>
+                        </div>
+                        <div class="form__field">
+                            <textarea class="form__textarea form__input" id="fMessage" rows="4" placeholder=" " required></textarea>
+                            <label for="fMessage" class="form__label">Project Details</label>
+                        </div>
+
+                        <div class="form__submit-wrap">
+                            <button type="submit" class="form__submit" id="formSubmit">
+                                <span class="form__submit-text">
+                                    <span class="form__submit-label">Submit Inquiry</span>
+                                    <span class="form__spinner"></span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <div class="form-error" id="formError" role="alert">
+                            <span class="form-error__icon">⚠</span>
+                            <span class="form-error__text" id="formErrorText">Something went wrong. Please try again or email directly.</span>
+                        </div>
+                    </form>
+
+                    <div class="form-success" id="formSuccess" role="status">
+                        <div class="form-success__icon">
+                            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <div class="form-success__title">Inquiry Sent Successfully</div>
+                        <div class="form-success__text">
+                            Your inquiry has been sent successfully.<br>
+                            TOUFIK will reach out through email soon.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact__email-block reveal reveal--d5">
+                    <span class="contact__email-label">Or reach out directly</span>
+                    <a class="contact__email-link" id="contactEmailLink" href="mailto:contactwithtoufik@gmail.com">
+                        <span class="contact__email-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <path d="M2 7l10 7 10-7"/>
+                            </svg>
+                        </span>
+                        <span class="contact__email-text" id="contactEmailText">contactwithtoufik@gmail.com</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <footer class="footer">
+        <div class="footer__logo" id="footerLogo">TOUFIK</div>
+        <p class="footer__copy" id="footerCopy">© 2026 TOUFIK — All Rights Reserved</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
+    <script src="config.js"></script>
+    <script src="releases.js"></script>
+    <script src="gallery.js"></script>
+
+    <script src="script.js" defer></script>
+
+</body>
+</html>
