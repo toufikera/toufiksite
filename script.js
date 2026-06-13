@@ -30,28 +30,28 @@
     };
 
     /* ────────────────────────────────────────────────────────
-       MODULE: Init — bootstraps everything
+       MODULE: Init
     ──────────────────────────────────────────────────────── */
     function init() {
         emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
         applyConfig();
         renderReleases();
+        renderAudioExperience();
         renderGallery();
         renderSocial();
+        
         initPreloader();
         initParticles();
         initNav();
         initSmoothScroll();
         initHeroEq();
-        initAmbientWave();
-        initScrollReveal();
-        initAudioOrb();
         initParallax();
         initContactForm();
+        initScrollReveal(); // Initialize observer for newly rendered DOM
     }
 
     /* ────────────────────────────────────────────────────────
-       MODULE: Config — applies SITE_CONFIG to static elements
+       MODULE: Config
     ──────────────────────────────────────────────────────── */
     function applyConfig() {
         if (typeof SITE_CONFIG === 'undefined') return;
@@ -104,7 +104,7 @@
     }
 
     /* ────────────────────────────────────────────────────────
-       MODULE: Renders — builds dynamic content from data
+       MODULE: Renders — Releases & Gallery
     ──────────────────────────────────────────────────────── */
     function renderReleases() {
         if (typeof RELEASES === 'undefined') return;
@@ -112,27 +112,33 @@
         if (!list) return;
 
         list.innerHTML = RELEASES.map(r => {
-            const isRealCover = r.coverArt && !r.coverArt.startsWith('css-');
-            const coverInner  = isRealCover
-                ? `<img src="${r.coverArt}" alt="${r.title}" loading="lazy">`
-                : `<div class="vis-art ${COVER_MAP[r.coverArt] || 'art--cover-warm'}"></div>`;
+            let mediaInner = '';
+            if (r.video) {
+                mediaInner = `<video src="${r.video}" poster="${r.thumbnail || r.cover}" autoplay loop muted playsinline></video>`;
+            } else if (r.cover) {
+                mediaInner = `<img src="${r.cover}" alt="${r.title}" loading="lazy">`;
+            } else {
+                mediaInner = `<div class="vis-art ${COVER_MAP[r.cssFallback] || 'art--cover-warm'}"></div>`;
+            }
+
+            const audioTag = r.audio ? `<audio class="release-audio" src="${r.audio}" preload="none"></audio>` : '';
 
             const platforms = r.platforms
                 .map(p => `<a href="${p.url}" target="_blank" rel="noopener" class="platform-link">${p.name}</a>`)
                 .join('');
 
-            const badge = r.featured
-                ? `<div class="release-card__badge">Featured</div>` : '';
+            const badge = r.featured ? `<div class="release-card__badge">Featured</div>` : '';
 
             return `
             <div class="release-card" data-id="${r.id}">
                 <div class="release-card__cover">
-                    <div class="vis-slot">${coverInner}</div>
+                    <div class="vis-slot">${mediaInner}</div>
                     ${badge}
                     <div class="release-card__watermark">${r.title.toLowerCase()}</div>
-                    <div class="release-card__play">
+                    <div class="release-card__play" role="button" aria-label="Play ${r.title}">
                         <div class="release-card__play-icon"></div>
                     </div>
+                    ${audioTag}
                 </div>
                 <div class="release-card__info">
                     <div class="release-card__type">${r.type}</div>
@@ -147,7 +153,7 @@
 
         buildWaveforms();
         initCardHovers();
-        initScrollReveal(); 
+        initAudioPlayback();
     }
 
     function renderGallery() {
@@ -182,7 +188,103 @@
     }
 
     /* ────────────────────────────────────────────────────────
-       MODULE: Waveforms & Card Interactions
+       MODULE: Renders — Audio Experience System
+    ──────────────────────────────────────────────────────── */
+    function renderAudioExperience() {
+        if (typeof AUDIO_EXPERIENCE === 'undefined') return;
+        const list = document.getElementById('audioExperienceList');
+        if (!list) return;
+
+        list.innerHTML = AUDIO_EXPERIENCE.map((item, i) => `
+            <div class="audio-exp__item reveal reveal--d${(i % 5) + 1}" style="display:flex; flex-direction:column; align-items:center; text-align:center;">
+                ${item.title ? `<h3 class="u-title" style="font-size:clamp(1.4rem, 2.5vw, 2rem); letter-spacing:0.15rem; margin-bottom:0.2rem;">${item.title}</h3>` : ''}
+                ${item.subtitle ? `<p class="u-subtitle" style="margin-bottom:1.5rem; font-size:0.9rem;">${item.subtitle}</p>` : ''}
+                
+                <div class="audio-exp__wave ambient-wave-container" data-bars="60" aria-hidden="true"></div>
+                
+                <div class="audio-exp__orb audio-orb-btn" role="button" tabindex="0" aria-label="Play ${item.title}">
+                    <span class="audio-exp__icon">▶</span>
+                </div>
+                <span class="audio-exp__hint">Tap to Experience</span>
+                
+                ${item.audio ? `<audio class="ambient-audio-el" src="${item.audio}" preload="none"></audio>` : ''}
+            </div>
+        `).join('');
+
+        // Build dynamic ambient waveforms
+        document.querySelectorAll('.ambient-wave-container:not([data-built])').forEach(container => {
+            const count = parseInt(container.dataset.bars) || 60;
+            for (let i = 0; i < count; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'ambient-bar';
+                bar.style.setProperty('--ab-height', (3 + Math.random() * 35) + 'px');
+                bar.style.setProperty('--ab-speed',  (1 + Math.random() * 2.5) + 's');
+                bar.style.setProperty('--ab-delay',  (Math.random() * 2) + 's');
+                container.appendChild(bar);
+            }
+            container.dataset.built = '1';
+        });
+
+        // Initialize Orbs
+        document.querySelectorAll('.audio-exp__item').forEach(item => {
+            const orb = item.querySelector('.audio-orb-btn');
+            const icon = orb.querySelector('.audio-exp__icon');
+            const audioEl = item.querySelector('.ambient-audio-el');
+
+            if (!orb || !audioEl) return;
+
+            const toggle = () => {
+                // Pause releases and other ambient audio
+                document.querySelectorAll('audio').forEach(a => {
+                    if (a !== audioEl) {
+                        a.pause();
+                        
+                        // Reset release icons if it was a release
+                        const relIcon = a.parentElement.querySelector('.release-card__play-icon');
+                        if (relIcon) {
+                            relIcon.style.borderStyle = 'solid';
+                            relIcon.style.borderWidth = '6px 0 6px 10px';
+                            relIcon.style.height = '0';
+                            relIcon.style.marginLeft = '2px';
+                        }
+                        
+                        // Reset other orb icons
+                        const ambIcon = a.parentElement.querySelector('.audio-exp__icon');
+                        const ambOrb = a.parentElement.querySelector('.audio-orb-btn');
+                        if (ambIcon) ambIcon.textContent = '▶';
+                        if (ambOrb) {
+                            ambOrb.style.borderColor = '';
+                            ambOrb.style.boxShadow = '';
+                        }
+                    }
+                });
+
+                if (audioEl.paused) {
+                    audioEl.play().catch(e => console.error("Audio playback failed:", e));
+                    icon.textContent = '❚❚';
+                    orb.style.borderColor = 'var(--c-gold)';
+                    orb.style.boxShadow = '0 0 60px rgba(194,160,78,.1)';
+                } else {
+                    audioEl.pause();
+                    icon.textContent = '▶';
+                    orb.style.borderColor = '';
+                    orb.style.boxShadow = '';
+                }
+            };
+
+            orb.addEventListener('click', toggle);
+            orb.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') toggle(); });
+            
+            audioEl.addEventListener('ended', () => {
+                icon.textContent = '▶';
+                orb.style.borderColor = '';
+                orb.style.boxShadow = '';
+            });
+        });
+    }
+
+    /* ────────────────────────────────────────────────────────
+       MODULE: Interactions & Logic
     ──────────────────────────────────────────────────────── */
     function buildWaveforms() {
         document.querySelectorAll('.release-card__wave:not([data-built])').forEach(container => {
@@ -214,8 +316,69 @@
         });
     }
 
+    function initAudioPlayback() {
+        document.querySelectorAll('.release-card').forEach(card => {
+            const playBtn = card.querySelector('.release-card__play');
+            const audioEl = card.querySelector('.release-audio');
+            const playIcon = card.querySelector('.release-card__play-icon');
+
+            if (!playBtn || !audioEl) return;
+
+            const resetOthers = () => {
+                document.querySelectorAll('audio').forEach(a => {
+                    if (a !== audioEl) {
+                        a.pause();
+                        
+                        // Reset other release icons
+                        const otherIcon = a.parentElement.querySelector('.release-card__play-icon');
+                        if (otherIcon) {
+                            otherIcon.style.borderStyle = 'solid';
+                            otherIcon.style.borderWidth = '6px 0 6px 10px';
+                            otherIcon.style.height = '0';
+                            otherIcon.style.marginLeft = '2px';
+                        }
+
+                        // Reset ambient orb icons
+                        const ambIcon = a.parentElement.querySelector('.audio-exp__icon');
+                        const ambOrb = a.parentElement.querySelector('.audio-orb-btn');
+                        if (ambIcon) ambIcon.textContent = '▶';
+                        if (ambOrb) {
+                            ambOrb.style.borderColor = '';
+                            ambOrb.style.boxShadow = '';
+                        }
+                    }
+                });
+            };
+
+            playBtn.addEventListener('click', () => {
+                resetOthers();
+
+                if (audioEl.paused) {
+                    audioEl.play().catch(e => console.error("Audio playback failed:", e));
+                    playIcon.style.borderStyle = 'double';
+                    playIcon.style.borderWidth = '0px 0px 0px 10px';
+                    playIcon.style.height = '12px';
+                    playIcon.style.marginLeft = '0';
+                } else {
+                    audioEl.pause();
+                    playIcon.style.borderStyle = 'solid';
+                    playIcon.style.borderWidth = '6px 0 6px 10px';
+                    playIcon.style.height = '0';
+                    playIcon.style.marginLeft = '2px';
+                }
+            });
+
+            audioEl.addEventListener('ended', () => {
+                playIcon.style.borderStyle = 'solid';
+                playIcon.style.borderWidth = '6px 0 6px 10px';
+                playIcon.style.height = '0';
+                playIcon.style.marginLeft = '2px';
+            });
+        });
+    }
+
     /* ────────────────────────────────────────────────────────
-       MODULE: Preloader
+       MODULE: Preloader & Particles
     ──────────────────────────────────────────────────────── */
     function initPreloader() {
         window.addEventListener('load', () => {
@@ -226,9 +389,6 @@
         });
     }
 
-    /* ────────────────────────────────────────────────────────
-       MODULE: Ambient Particles
-    ──────────────────────────────────────────────────────── */
     function initParticles() {
         const layer = document.getElementById('particles');
         if (!layer) return;
@@ -248,7 +408,7 @@
     }
 
     /* ────────────────────────────────────────────────────────
-       MODULE: Navigation
+       MODULE: Navigation & Scroll
     ──────────────────────────────────────────────────────── */
     function initNav() {
         const nav     = document.getElementById('nav');
@@ -278,9 +438,6 @@
         }
     }
 
-    /* ────────────────────────────────────────────────────────
-       MODULE: Smooth Scroll
-    ──────────────────────────────────────────────────────── */
     function initSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
@@ -291,9 +448,6 @@
         });
     }
 
-    /* ────────────────────────────────────────────────────────
-       MODULE: Hero Equalizer
-    ──────────────────────────────────────────────────────── */
     function initHeroEq() {
         const container = document.getElementById('heroEq');
         if (!container) return;
@@ -307,25 +461,17 @@
         }
     }
 
-    /* ────────────────────────────────────────────────────────
-       MODULE: Ambient Wave (Audio section)
-    ──────────────────────────────────────────────────────── */
-    function initAmbientWave() {
-        const container = document.getElementById('ambientWave');
-        if (!container) return;
-        for (let i = 0; i < PERF.ambientBars; i++) {
-            const bar = document.createElement('div');
-            bar.className = 'ambient-bar';
-            bar.style.setProperty('--ab-height', (3 + Math.random() * 35) + 'px');
-            bar.style.setProperty('--ab-speed',  (1 + Math.random() * 2.5) + 's');
-            bar.style.setProperty('--ab-delay',  (Math.random() * 2) + 's');
-            container.appendChild(bar);
-        }
+    function initParallax() {
+        const heroBg = document.querySelector('.hero__bg');
+        if (!heroBg) return;
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+            if (y < window.innerHeight) {
+                heroBg.style.transform = `translateY(${y * .08}px)`;
+            }
+        }, { passive: true });
     }
 
-    /* ────────────────────────────────────────────────────────
-       MODULE: Scroll Reveal
-    ──────────────────────────────────────────────────────── */
     let scrollObserver = null;
     function initScrollReveal() {
         if (!scrollObserver) {
@@ -338,44 +484,12 @@
                 });
             }, { threshold: .07, rootMargin: '0px 0px -30px 0px' });
         }
-        document.querySelectorAll('.reveal:not([data-observed]), .release-card:not([data-observed]), .gallery-item:not([data-observed])')
+        document.querySelectorAll('.reveal:not([data-observed]), .release-card:not([data-observed]), .gallery-item:not([data-observed]), .audio-exp__item:not([data-observed])')
             .forEach(el => {
                 scrollObserver.observe(el);
                 el.dataset.observed = '1';
                 el.classList.add('reveal');
             });
-    }
-
-    /* ────────────────────────────────────────────────────────
-       MODULE: Audio Orb
-    ──────────────────────────────────────────────────────── */
-    function initAudioOrb() {
-        const orb  = document.getElementById('audioOrb');
-        const icon = document.getElementById('audioOrbIcon');
-        if (!orb || !icon) return;
-        let playing = false;
-        const toggle = () => {
-            playing = !playing;
-            icon.textContent = playing ? '❚❚' : '▶';
-            orb.style.borderColor = playing ? 'var(--c-gold)' : '';
-            orb.style.boxShadow   = playing ? '0 0 60px rgba(194,160,78,.1)' : '';
-        };
-        orb.addEventListener('click', toggle);
-        orb.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') toggle(); });
-    }
-
-    /* ────────────────────────────────────────────────────────
-       MODULE: Subtle Parallax (Hero)
-    ──────────────────────────────────────────────────────── */
-    function initParallax() {
-        const heroBg = document.querySelector('.hero__bg');
-        if (!heroBg) return;
-        window.addEventListener('scroll', () => {
-            const y = window.scrollY;
-            if (y < window.innerHeight) {
-                heroBg.style.transform = `translateY(${y * .08}px)`;
-            }
-        }, { passive: true });
     }
 
     /* ────────────────────────────────────────────────────────
