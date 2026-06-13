@@ -1,5 +1,7 @@
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    RELEASES DATA ARRAY
+   Dynamically rendered by script.js. 
+   Add new releases here without touching the HTML.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 const RELEASES = [
     {
@@ -7,14 +9,15 @@ const RELEASES = [
         title:       'Bas Kyu Nahi',
         type:        'Single',
         date:        '2024',
-        featured:    false,
+        featured:    true,
         description: 'Some feelings stay unfinished no matter how deeply you love.',
-        coverArt:    'css-warm',
         audio:       'assets/audio/bas-kyu-nahi.mp3',
-        thumbnail:   'bas-kyu-nahi-cover.jpg',
-        teaserVideo: '',
+        cover:       'assets/covers/bas-kyu-nahi-cover.jpg',
+        thumbnail:   'assets/thumbnails/bas-kyu-nahi-thumb.jpg',
+        video:       '', /* e.g., 'assets/videos/bas-kyu-nahi-teaser.mp4' */
+        cssFallback: 'css-warm', /* Fallback atmosphere if cover image is empty */
         platforms: [
-            { name: 'YouTube',    url: 'https://www.youtube.com/@toufikera'    },
+            { name: 'YouTube',    url: 'https://www.youtube.com/toufikera'    },
             { name: 'SoundCloud', url: 'https://www.soundcloud.com/toufikera' },
             { name: 'Audiomack',  url: 'https://www.audiomack.com/toufikera'  }
         ]
@@ -26,12 +29,13 @@ const RELEASES = [
         date:        '2024',
         featured:    false,
         description: 'A soft emotional world where love feels personal, loyal, and completely yours.',
-        coverArt:    'css-cool',
         audio:       'assets/audio/hun-bas-tumhari.mp3',
-        thumbnail:   'assets/covers/hun-bas-tumhari-cover.png',
-        teaserVideo: '',
+        cover:       'assets/covers/hun-bas-tumhari-cover.jpg',
+        thumbnail:   'assets/thumbnails/hun-bas-tumhari-thumb.jpg',
+        video:       '',
+        cssFallback: 'css-cool',
         platforms: [
-            { name: 'YouTube',    url: 'https://www.youtube.com/@toufikera'    },
+            { name: 'YouTube',    url: 'https://www.youtube.com/toufikera'    },
             { name: 'SoundCloud', url: 'https://www.soundcloud.com/toufikera' },
             { name: 'Audiomack',  url: 'https://www.audiomack.com/toufikera'  }
         ]
@@ -43,12 +47,13 @@ const RELEASES = [
         date:        '2024',
         featured:    false,
         description: 'When distance becomes louder than words and memories refuse to fade.',
-        coverArt:    'css-deep',
         audio:       'assets/audio/teri-duri.mp3',
-        thumbnail:   'assets/covers/teri-duri-cover.jpg',
-        teaserVideo: '',
+        cover:       'assets/covers/teri-duri-cover.jpg',
+        thumbnail:   'assets/thumbnails/teri-duri-thumb.jpg',
+        video:       '',
+        cssFallback: 'css-deep',
         platforms: [
-            { name: 'YouTube',    url: 'https://www.youtube.com/@toufikera'    },
+            { name: 'YouTube',    url: 'https://www.youtube.com/toufikera'    },
             { name: 'SoundCloud', url: 'https://www.soundcloud.com/toufikera' },
             { name: 'Audiomack',  url: 'https://www.audiomack.com/toufikera'  }
         ]
