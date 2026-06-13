@@ -80,5 +80,4 @@ const AUDIO_EXPERIENCE = [
         subtitle: 'Immersive Spatial Audio',
         audio: 'assets/audio/farz-3d.mp3'
     }
-    // You can seamlessly add more immersive audio tracks here as objects.
 ];
