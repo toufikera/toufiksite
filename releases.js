@@ -11,7 +11,7 @@ const RELEASES = [
         description: 'Some feelings stay unfinished no matter how deeply you love.',
         coverArt:    'css-warm',
         audio:       'assets/audio/bas-kyu-nahi.mp3',
-        thumbnail:   'assets/covers/bas-kyu-nahi-cover.jpg',
+        thumbnail:   'bas-kyu-nahi-cover.jpg',
         teaserVideo: '',
         platforms: [
             { name: 'YouTube',    url: 'https://www.youtube.com/@toufikera'    },
