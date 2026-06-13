@@ -14,7 +14,7 @@ const RELEASES = [
         thumbnail:   'assets/covers/bas-kyu-nahi-cover.jpg',
         teaserVideo: '',
         platforms: [
-            { name: 'YouTube',    url: 'https://www.youtube.com/toufikera'    },
+            { name: 'YouTube',    url: 'https://www.youtube.com/@toufikera'    },
             { name: 'SoundCloud', url: 'https://www.soundcloud.com/toufikera' },
             { name: 'Audiomack',  url: 'https://www.audiomack.com/toufikera'  }
         ]
@@ -31,7 +31,7 @@ const RELEASES = [
         thumbnail:   'assets/covers/hun-bas-tumhari-cover.png',
         teaserVideo: '',
         platforms: [
-            { name: 'YouTube',    url: 'https://www.youtube.com/toufikera'    },
+            { name: 'YouTube',    url: 'https://www.youtube.com/@toufikera'    },
             { name: 'SoundCloud', url: 'https://www.soundcloud.com/toufikera' },
             { name: 'Audiomack',  url: 'https://www.audiomack.com/toufikera'  }
         ]
@@ -48,7 +48,7 @@ const RELEASES = [
         thumbnail:   'assets/covers/teri-duri-cover.jpg',
         teaserVideo: '',
         platforms: [
-            { name: 'YouTube',    url: 'https://www.youtube.com/toufikera'    },
+            { name: 'YouTube',    url: 'https://www.youtube.com/@toufikera'    },
             { name: 'SoundCloud', url: 'https://www.soundcloud.com/toufikera' },
             { name: 'Audiomack',  url: 'https://www.audiomack.com/toufikera'  }
         ]
