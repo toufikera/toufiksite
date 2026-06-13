@@ -34,10 +34,11 @@
     ──────────────────────────────────────────────────────── */
     function init() {
         emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+        
         applyConfig();
         renderReleases();
-        renderAudioExperience();
         renderGallery();
+        renderAudioExperience();
         renderSocial();
         
         initPreloader();
@@ -47,11 +48,13 @@
         initHeroEq();
         initParallax();
         initContactForm();
-        initScrollReveal(); // Initialize observer for newly rendered DOM
+        
+        // Initialize ScrollReveal AFTER DOM elements are dynamically injected
+        initScrollReveal(); 
     }
 
     /* ────────────────────────────────────────────────────────
-       MODULE: Config
+       MODULE: Config Integration
     ──────────────────────────────────────────────────────── */
     function applyConfig() {
         if (typeof SITE_CONFIG === 'undefined') return;
@@ -104,7 +107,7 @@
     }
 
     /* ────────────────────────────────────────────────────────
-       MODULE: Renders — Releases & Gallery
+       MODULE: Dynamic Rendering
     ──────────────────────────────────────────────────────── */
     function renderReleases() {
         if (typeof RELEASES === 'undefined') return;
@@ -122,11 +125,7 @@
             }
 
             const audioTag = r.audio ? `<audio class="release-audio" src="${r.audio}" preload="none"></audio>` : '';
-
-            const platforms = r.platforms
-                .map(p => `<a href="${p.url}" target="_blank" rel="noopener" class="platform-link">${p.name}</a>`)
-                .join('');
-
+            const platforms = r.platforms.map(p => `<a href="${p.url}" target="_blank" rel="noopener" class="platform-link">${p.name}</a>`).join('');
             const badge = r.featured ? `<div class="release-card__badge">Featured</div>` : '';
 
             return `
@@ -173,40 +172,20 @@
         }).join('');
     }
 
-    function renderSocial() {
-        if (typeof SITE_CONFIG === 'undefined') return;
-        const grid = document.getElementById('socialGrid');
-        if (!grid) return;
-        grid.innerHTML = SITE_CONFIG.socialLinks.map(s => `
-            <a href="${s.url}" target="_blank" rel="noopener" class="social-card">
-                <div class="social-card__icon">
-                    <svg viewBox="0 0 24 24" aria-label="${s.name}">${s.icon}</svg>
-                </div>
-                <span class="social-card__name">${s.name}</span>
-            </a>`
-        ).join('');
-    }
-
-    /* ────────────────────────────────────────────────────────
-       MODULE: Renders — Audio Experience System
-    ──────────────────────────────────────────────────────── */
     function renderAudioExperience() {
         if (typeof AUDIO_EXPERIENCE === 'undefined') return;
         const list = document.getElementById('audioExperienceList');
         if (!list) return;
 
         list.innerHTML = AUDIO_EXPERIENCE.map((item, i) => `
-            <div class="audio-exp__item reveal reveal--d${(i % 5) + 1}" style="display:flex; flex-direction:column; align-items:center; text-align:center;">
-                ${item.title ? `<h3 class="u-title" style="font-size:clamp(1.4rem, 2.5vw, 2rem); letter-spacing:0.15rem; margin-bottom:0.2rem;">${item.title}</h3>` : ''}
-                ${item.subtitle ? `<p class="u-subtitle" style="margin-bottom:1.5rem; font-size:0.9rem;">${item.subtitle}</p>` : ''}
-                
+            <div class="audio-exp__item reveal reveal--d${(i % 5) + 1}">
+                ${item.title ? `<h3 class="u-title">${item.title}</h3>` : ''}
+                ${item.subtitle ? `<p class="u-subtitle">${item.subtitle}</p>` : ''}
                 <div class="audio-exp__wave ambient-wave-container" data-bars="60" aria-hidden="true"></div>
-                
                 <div class="audio-exp__orb audio-orb-btn" role="button" tabindex="0" aria-label="Play ${item.title}">
                     <span class="audio-exp__icon">▶</span>
                 </div>
                 <span class="audio-exp__hint">Tap to Experience</span>
-                
                 ${item.audio ? `<audio class="ambient-audio-el" src="${item.audio}" preload="none"></audio>` : ''}
             </div>
         `).join('');
@@ -225,7 +204,7 @@
             container.dataset.built = '1';
         });
 
-        // Initialize Orbs
+        // Initialize Orb playback logic
         document.querySelectorAll('.audio-exp__item').forEach(item => {
             const orb = item.querySelector('.audio-orb-btn');
             const icon = orb.querySelector('.audio-exp__icon');
@@ -234,30 +213,7 @@
             if (!orb || !audioEl) return;
 
             const toggle = () => {
-                // Pause releases and other ambient audio
-                document.querySelectorAll('audio').forEach(a => {
-                    if (a !== audioEl) {
-                        a.pause();
-                        
-                        // Reset release icons if it was a release
-                        const relIcon = a.parentElement.querySelector('.release-card__play-icon');
-                        if (relIcon) {
-                            relIcon.style.borderStyle = 'solid';
-                            relIcon.style.borderWidth = '6px 0 6px 10px';
-                            relIcon.style.height = '0';
-                            relIcon.style.marginLeft = '2px';
-                        }
-                        
-                        // Reset other orb icons
-                        const ambIcon = a.parentElement.querySelector('.audio-exp__icon');
-                        const ambOrb = a.parentElement.querySelector('.audio-orb-btn');
-                        if (ambIcon) ambIcon.textContent = '▶';
-                        if (ambOrb) {
-                            ambOrb.style.borderColor = '';
-                            ambOrb.style.boxShadow = '';
-                        }
-                    }
-                });
+                pauseAllAudioExcept(audioEl);
 
                 if (audioEl.paused) {
                     audioEl.play().catch(e => console.error("Audio playback failed:", e));
@@ -280,6 +236,49 @@
                 orb.style.borderColor = '';
                 orb.style.boxShadow = '';
             });
+        });
+    }
+
+    function renderSocial() {
+        if (typeof SITE_CONFIG === 'undefined') return;
+        const grid = document.getElementById('socialGrid');
+        if (!grid) return;
+        grid.innerHTML = SITE_CONFIG.socialLinks.map(s => `
+            <a href="${s.url}" target="_blank" rel="noopener" class="social-card">
+                <div class="social-card__icon">
+                    <svg viewBox="0 0 24 24" aria-label="${s.name}">${s.icon}</svg>
+                </div>
+                <span class="social-card__name">${s.name}</span>
+            </a>`
+        ).join('');
+    }
+
+    /* ────────────────────────────────────────────────────────
+       MODULE: Shared Audio Pause Logic
+    ──────────────────────────────────────────────────────── */
+    function pauseAllAudioExcept(exceptAudio) {
+        document.querySelectorAll('audio').forEach(a => {
+            if (a !== exceptAudio) {
+                a.pause();
+                
+                // Reset release track icons
+                const relIcon = a.parentElement.querySelector('.release-card__play-icon');
+                if (relIcon) {
+                    relIcon.style.borderStyle = 'solid';
+                    relIcon.style.borderWidth = '6px 0 6px 10px';
+                    relIcon.style.height = '0';
+                    relIcon.style.marginLeft = '2px';
+                }
+
+                // Reset ambient orb icons
+                const ambIcon = a.parentElement.querySelector('.audio-exp__icon');
+                const ambOrb = a.parentElement.querySelector('.audio-orb-btn');
+                if (ambIcon) ambIcon.textContent = '▶';
+                if (ambOrb) {
+                    ambOrb.style.borderColor = '';
+                    ambOrb.style.boxShadow = '';
+                }
+            }
         });
     }
 
@@ -324,34 +323,8 @@
 
             if (!playBtn || !audioEl) return;
 
-            const resetOthers = () => {
-                document.querySelectorAll('audio').forEach(a => {
-                    if (a !== audioEl) {
-                        a.pause();
-                        
-                        // Reset other release icons
-                        const otherIcon = a.parentElement.querySelector('.release-card__play-icon');
-                        if (otherIcon) {
-                            otherIcon.style.borderStyle = 'solid';
-                            otherIcon.style.borderWidth = '6px 0 6px 10px';
-                            otherIcon.style.height = '0';
-                            otherIcon.style.marginLeft = '2px';
-                        }
-
-                        // Reset ambient orb icons
-                        const ambIcon = a.parentElement.querySelector('.audio-exp__icon');
-                        const ambOrb = a.parentElement.querySelector('.audio-orb-btn');
-                        if (ambIcon) ambIcon.textContent = '▶';
-                        if (ambOrb) {
-                            ambOrb.style.borderColor = '';
-                            ambOrb.style.boxShadow = '';
-                        }
-                    }
-                });
-            };
-
             playBtn.addEventListener('click', () => {
-                resetOthers();
+                pauseAllAudioExcept(audioEl);
 
                 if (audioEl.paused) {
                     audioEl.play().catch(e => console.error("Audio playback failed:", e));
