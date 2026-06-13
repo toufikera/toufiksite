@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
 
@@ -120,7 +120,9 @@
                 <h2   class="u-title reveal reveal--d2">THE RELEASES</h2>
                 <p    class="u-subtitle reveal reveal--d3">"A world behind every sound."</p>
             </div>
+            
             <div class="release-list" id="releaseList"></div>
+
         </div>
     </section>
 
@@ -142,17 +144,14 @@
 
     <section class="audio-exp" id="audio">
         <div class="container section-pad">
-            <div class="audio-exp__inner">
+            <div style="text-align:center;">
                 <span class="u-label reveal">Audio Experience</span>
                 <div  class="u-divider reveal reveal--d1" style="margin:0 auto 1.6rem;"></div>
                 <h2   class="u-title reveal reveal--d2">FEEL THE SOUND</h2>
                 <p    class="u-subtitle reveal reveal--d3">"Close your eyes. Press play."</p>
-                <div  class="audio-exp__wave reveal reveal--d4" id="ambientWave" aria-hidden="true"></div>
-                <div  class="audio-exp__orb  reveal reveal--d5" id="audioOrb" role="button" tabindex="0" aria-label="Play ambient audio">
-                    <span class="audio-exp__icon" id="audioOrbIcon">▶</span>
-                </div>
-                <span class="audio-exp__hint reveal reveal--d5">Tap to Experience</span>
             </div>
+
+            <div class="audio-exp__list" id="audioExperienceList" style="display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(3rem, 6vw, 6rem); margin-top:3rem;"></div>
         </div>
     </section>
 
@@ -289,11 +288,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
-    <script src="config.js"></script>
-    <script src="releases.js"></script>
-    <script src="gallery.js"></script>
+    <script src="data/config.js"></script>
+    <script src="data/releases.js"></script>
+    <script src="data/gallery.js"></script>
 
-    <script src="script.js" defer></script>
+    <script src="scripts/script.js" defer></script>
 
 </body>
 </html>
