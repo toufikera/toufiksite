@@ -58,7 +58,7 @@ body {
 ::-webkit-scrollbar       { width:4px; }
 ::-webkit-scrollbar-track  { background:var(--c-black); }
 ::-webkit-scrollbar-thumb  { background:var(--c-gold); border-radius:2px; }
-img  { max-width:100%; display:block; }
+img, video { max-width:100%; display:block; }
 a    { text-decoration:none; color:inherit; }
 ul   { list-style:none; }
 button { cursor:pointer; border:none; background:none; font-family:inherit; }
@@ -460,6 +460,7 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
     border:1px solid var(--c-gold-border); background:rgba(8,8,8,.4);
     display:flex; align-items:center; justify-content:center;
     z-index:5; transition:all var(--t-med) var(--ease-smooth);
+    cursor:pointer;
 }
 .release-card:hover .release-card__play {
     background:var(--c-gold); border-color:var(--c-gold);
@@ -545,7 +546,20 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
 ============================================================ */
 .audio-exp { background:var(--c-charcoal-deep); }
 .audio-exp__inner { display:flex; flex-direction:column; align-items:center; text-align:center; }
-.audio-exp__wave { display:flex; align-items:center; gap:2px; height:45px; opacity:.15; }
+.audio-exp__list {
+    display:flex; flex-wrap:wrap; justify-content:center;
+    gap:clamp(3rem,6vw,6rem); margin-top:3rem; width:100%;
+}
+.audio-exp__item {
+    display:flex; flex-direction:column; align-items:center; text-align:center;
+}
+.audio-exp__item .u-title {
+    font-size:clamp(1.4rem, 2.5vw, 2rem); letter-spacing:0.15rem; margin-bottom:0.2rem;
+}
+.audio-exp__item .u-subtitle {
+    margin-bottom:1.5rem; font-size:0.9rem;
+}
+.audio-exp__wave { display:flex; align-items:center; justify-content:center; gap:2px; height:45px; opacity:.15; }
 .ambient-bar {
     width:1.5px; background:var(--c-gold); border-radius:1px;
     animation:ambientPulse var(--ab-speed,1.5s) ease-in-out infinite;
@@ -562,7 +576,7 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
 .audio-exp__orb::before,
 .audio-exp__orb::after {
     content:''; position:absolute; border-radius:50%;
-    border:1px solid rgba(194,160,78,.05);
+    border:1px solid rgba(194,160,78,.05); pointer-events:none;
 }
 .audio-exp__orb::before { width:165px; height:165px; animation:orbPulse 4s ease-in-out infinite; }
 .audio-exp__orb::after  { width:210px; height:210px; animation:orbPulse 4s ease-in-out infinite .7s; }
