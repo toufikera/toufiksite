@@ -9,15 +9,18 @@ const SITE_CONFIG = {
     year:         '2026',
     contactEmail: 'contactwithtoufik@gmail.com',
 
+    /* Hero System is now fully dynamic. 
+       Change type to 'video' or 'image', and provide a path. */
     hero: {
-        type: 'css',
-        path: '',
-        alt:  'TOUFIK'
+        type: 'video', 
+        path: 'assets/videos/hero-loop.mp4', /* e.g., 'assets/images/hero-bg.jpg' */
+        alt:  'TOUFIK Cinematic Hero',
+        cssFallback: 'art--hero' /* The underlying cinematic lighting/atmosphere */
     },
 
     aboutPhoto: {
-        path: '',
-        alt:  'TOUFIK'
+        path: 'assets/images/about-main.jpg',
+        alt:  'TOUFIK - About'
     },
 
     skills: [
@@ -68,16 +71,3 @@ const SITE_CONFIG = {
         }
     ]
 };
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   AUDIO EXPERIENCE DATA
-   Dynamically generates audio immersion orbs.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-const AUDIO_EXPERIENCE = [
-    {
-        id: 'farz-3d',
-        title: 'FARZ 3D',
-        subtitle: 'Immersive Spatial Audio',
-        audio: 'assets/audio/farz-3d.mp3'
-    }
-];
