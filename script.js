@@ -33,7 +33,9 @@
        MODULE: Init
     ──────────────────────────────────────────────────────── */
     function init() {
-        emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+        }
         
         applyConfig();
         renderReleases();
@@ -74,20 +76,31 @@
         setAttr('contactEmailLink', 'href', `mailto:${cfg.contactEmail}`);
         setEl('contactEmailText', cfg.contactEmail);
 
-        if (cfg.hero.path) {
+        if (cfg.hero) {
             const heroEl = document.getElementById('heroMedia');
             if (heroEl) {
-                heroEl.innerHTML = cfg.hero.type === 'video'
-                    ? `<video src="${cfg.hero.path}" autoplay muted loop playsinline aria-hidden="true"></video>`
-                    : `<img src="${cfg.hero.path}" alt="${cfg.hero.alt}" loading="lazy">`;
+                let heroInner = `<div class="vis-art ${cfg.hero.cssFallback || 'art--hero'}"></div>`;
+                if (cfg.hero.path) {
+                    if (cfg.hero.type === 'video') {
+                        heroInner += `<video src="${cfg.hero.path}" autoplay muted loop playsinline aria-hidden="true"></video>`;
+                    } else if (cfg.hero.type === 'image') {
+                        heroInner += `<img src="${cfg.hero.path}" alt="${cfg.hero.alt}" loading="lazy">`;
+                    }
+                }
+                heroEl.innerHTML = heroInner;
             }
         }
 
-        if (cfg.aboutPhoto.path) {
+        if (cfg.aboutPhoto && cfg.aboutPhoto.path) {
             const aboutEl = document.getElementById('aboutPhoto');
             if (aboutEl) {
-                aboutEl.innerHTML =
-                    `<img src="${cfg.aboutPhoto.path}" alt="${cfg.aboutPhoto.alt}" loading="lazy">`;
+                aboutEl.innerHTML = `
+                    <div class="vis-art art--about">
+                        <div class="light-beam" style="left:30%;top:0;height:100%;"></div>
+                        <div class="light-beam" style="left:65%;top:10%;height:80%;opacity:.5;"></div>
+                    </div>
+                    <img src="${cfg.aboutPhoto.path}" alt="${cfg.aboutPhoto.alt}" loading="lazy">
+                `;
             }
         }
 
@@ -125,7 +138,7 @@
             }
 
             const audioTag = r.audio ? `<audio class="release-audio" src="${r.audio}" preload="none"></audio>` : '';
-            const platforms = r.platforms.map(p => `<a href="${p.url}" target="_blank" rel="noopener" class="platform-link">${p.name}</a>`).join('');
+            const platforms = r.platforms ? r.platforms.map(p => `<a href="${p.url}" target="_blank" rel="noopener" class="platform-link">${p.name}</a>`).join('') : '';
             const badge = r.featured ? `<div class="release-card__badge">Featured</div>` : '';
 
             return `
@@ -162,12 +175,17 @@
 
         grid.innerHTML = GALLERY_ITEMS.map(item => {
             const content = item.image
-                ? `<img src="${item.image}" alt="${item.label}" loading="lazy">`
-                : `<div class="vis-art ${item.artClass}"></div>`;
+                ? `<img src="${item.image}" alt="${item.label || 'Visual Experience'}" loading="lazy">`
+                : `<div class="vis-art ${item.artClass || 'art--g1'}"></div>`;
+            
+            const labelHtml = (item.label && item.label.trim() !== '')
+                ? `<div class="art-label"><span>${item.label}</span></div>`
+                : '';
+
             return `
             <div class="gallery-item" data-id="${item.id}">
                 <div class="vis-slot">${content}</div>
-                <div class="art-label"><span>${item.label}</span></div>
+                ${labelHtml}
             </div>`;
         }).join('');
     }
@@ -190,7 +208,6 @@
             </div>
         `).join('');
 
-        // Build dynamic ambient waveforms
         document.querySelectorAll('.ambient-wave-container:not([data-built])').forEach(container => {
             const count = parseInt(container.dataset.bars) || 60;
             for (let i = 0; i < count; i++) {
@@ -204,7 +221,6 @@
             container.dataset.built = '1';
         });
 
-        // Initialize Orb playback logic
         document.querySelectorAll('.audio-exp__item').forEach(item => {
             const orb = item.querySelector('.audio-orb-btn');
             const icon = orb.querySelector('.audio-exp__icon');
@@ -261,7 +277,6 @@
             if (a !== exceptAudio) {
                 a.pause();
                 
-                // Reset release track icons
                 const relIcon = a.parentElement.querySelector('.release-card__play-icon');
                 if (relIcon) {
                     relIcon.style.borderStyle = 'solid';
@@ -270,7 +285,6 @@
                     relIcon.style.marginLeft = '2px';
                 }
 
-                // Reset ambient orb icons
                 const ambIcon = a.parentElement.querySelector('.audio-exp__icon');
                 const ambOrb = a.parentElement.querySelector('.audio-orb-btn');
                 if (ambIcon) ambIcon.textContent = '▶';
@@ -489,8 +503,11 @@
             if (!isOther) customInput.value = '';
             if (isOther) setTimeout(() => customInput.focus(), 380);
         }
-        fService.addEventListener('change', () => handleReveal(fService, serviceReveal, fServiceCustom));
-        fInquiry.addEventListener('change', () => handleReveal(fInquiry, inquiryReveal, fInquiryCustom));
+        
+        if (fService && fInquiry) {
+            fService.addEventListener('change', () => handleReveal(fService, serviceReveal, fServiceCustom));
+            fInquiry.addEventListener('change', () => handleReveal(fInquiry, inquiryReveal, fInquiryCustom));
+        }
 
         function setLoading(on) {
             submitBtn.classList.toggle('is-loading', on);
