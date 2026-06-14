@@ -1,7 +1,6 @@
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    RELEASES DATA ARRAY
    Dynamically rendered by script.js. 
-   Add new releases here without touching the HTML.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 const RELEASES = [
     {
@@ -14,8 +13,8 @@ const RELEASES = [
         audio:       'assets/audio/bas-kyu-nahi.mp3',
         cover:       'assets/covers/bas-kyu-nahi-cover.jpg',
         thumbnail:   'assets/thumbnails/bas-kyu-nahi-thumb.jpg',
-        video:       '', /* e.g., 'assets/videos/bas-kyu-nahi-teaser.mp4' */
-        cssFallback: 'css-warm', /* Fallback atmosphere if cover image is empty */
+        video:       '',
+        cssFallback: 'css-warm',
         platforms: [
             { name: 'YouTube',    url: 'https://www.youtube.com/toufikera'    },
             { name: 'SoundCloud', url: 'https://www.soundcloud.com/toufikera' },
