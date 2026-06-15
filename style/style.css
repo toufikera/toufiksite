@@ -873,3 +873,965 @@ button { cursor:pointer; border:none; background:none; font-family:inherit; }
     .service-pill { width:100%; max-width:260px; text-align:center; }
     .contact__email-link { font-size:.7rem; }
 }
+    </style>
+</head>
+<body>
+
+    <div class="preloader" id="preloader">
+        <div class="preloader__name" id="preloaderName">TOUFIK</div>
+        <div class="preloader__bar"></div>
+    </div>
+
+    <div class="particles" id="particles"></div>
+
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <a href="#hero" class="nav__logo" id="navLogo">TOUFIK</a>
+        <ul class="nav__menu">
+            <li><a href="#about"    class="nav__link">About</a></li>
+            <li><a href="#releases" class="nav__link">Music</a></li>
+            <li><a href="#visuals"  class="nav__link">Visuals</a></li>
+            <li><a href="#social"   class="nav__link">Connect</a></li>
+            <li><a href="#contact"  class="nav__link">Contact</a></li>
+        </ul>
+        <button class="nav__burger" id="burger" aria-label="Toggle mobile menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
+        <a href="#about">About</a>
+        <a href="#releases">Music</a>
+        <a href="#visuals">Visuals</a>
+        <a href="#social">Connect</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <section class="hero" id="hero" aria-label="Hero">
+        <div class="hero__bg">
+            <div class="vis-slot" id="heroMedia">
+                </div>
+        </div>
+        <div class="hero__gradient"></div>
+
+        <div class="hero__content">
+            <div class="hero__topline"></div>
+            <h1 class="hero__name"    id="heroName">T O U F I K</h1>
+            <p  class="hero__tagline" id="heroTagline">One Man Music Industry</p>
+            <p  class="hero__roles">
+                Singer <span>•</span> Rapper <span>•</span> Songwriter
+                <span>•</span> Producer <span>•</span> Audio Engineer
+            </p>
+            <div class="hero__actions">
+                <a href="#releases" class="btn btn--gold">Explore Music</a>
+                <a href="#visuals"  class="btn btn--ghost">Watch Visuals</a>
+                <a href="#contact"  class="btn btn--ghost">Contact</a>
+            </div>
+        </div>
+
+        <div class="hero__eq" id="heroEq" aria-hidden="true"></div>
+
+        <div class="hero__scroll" aria-hidden="true">
+            <span class="hero__scroll-text">Scroll</span>
+            <div class="hero__scroll-line"></div>
+        </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="about" id="about">
+        <div class="container section-pad">
+            <div class="about__grid">
+                <div class="about__image-wrapper reveal">
+                    <div class="about__frame">
+                        <div class="vis-slot" id="aboutPhoto">
+                            </div>
+                    </div>
+                    <div class="about__corner about__corner--tl"></div>
+                    <div class="about__corner about__corner--br"></div>
+                </div>
+
+                <div>
+                    <span class="u-label reveal">The Artist</span>
+                    <div  class="u-divider reveal reveal--d1"></div>
+                    <h2   class="about__heading reveal reveal--d2">"One Man. Every Role."</h2>
+                    <p    class="about__text reveal reveal--d3">
+                        I make music the way I feel it — emotional, cinematic, personal, and real.
+                    </p>
+                    <p    class="about__text reveal reveal--d3">
+                        From writing and recording to production, mixing, and visuals, everything is built
+                        independently to create a complete artistic experience.
+                    </p>
+                    <div class="skill-tags reveal reveal--d4" id="skillTags"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="releases" id="releases">
+        <div class="container section-pad">
+            <div style="text-align:center;">
+                <span class="u-label reveal">The Releases</span>
+                <div  class="u-divider reveal reveal--d1" style="margin:0 auto 1.6rem;"></div>
+                <h2   class="u-title reveal reveal--d2">THE RELEASES</h2>
+                <p    class="u-subtitle reveal reveal--d3">"A world behind every sound."</p>
+            </div>
+            
+            <div class="release-list" id="releaseList"></div>
+        </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="visuals" id="visuals">
+        <div class="container section-pad">
+            <div style="text-align:center;">
+                <span class="u-label reveal">The Visuals</span>
+                <div  class="u-divider reveal reveal--d1" style="margin:0 auto 1.6rem;"></div>
+                <h2   class="u-title reveal reveal--d2">VISUAL UNIVERSE</h2>
+                <p    class="u-subtitle reveal reveal--d3">"Every frame tells a story."</p>
+            </div>
+            <div class="gallery-grid reveal reveal--d4" id="gallery"></div>
+        </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="audio-exp" id="audio">
+        <div class="container section-pad">
+            <div class="audio-exp__inner">
+                <span class="u-label reveal">Audio Experience</span>
+                <div  class="u-divider reveal reveal--d1" style="margin:0 auto 1.6rem;"></div>
+                <h2   class="u-title reveal reveal--d2">FEEL THE SOUND</h2>
+                <p    class="u-subtitle reveal reveal--d3">"Close your eyes. Press play."</p>
+
+                <div class="audio-exp__list" id="audioExperienceList"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="social" id="social">
+        <div class="container section-pad">
+            <div class="social__inner">
+                <span class="u-label reveal">Stay Connected</span>
+                <div  class="u-divider reveal reveal--d1" style="margin:0 auto 1.6rem;"></div>
+                <h2   class="u-title reveal reveal--d2">FIND THE ERA</h2>
+                <p    class="u-subtitle reveal reveal--d3">"Enter the universe."</p>
+                <div class="social__grid reveal reveal--d4" id="socialGrid"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="contact" id="contact">
+        <div class="contact__ambient" aria-hidden="true"></div>
+        <div class="container section-pad">
+            <div class="contact__inner">
+
+                <span class="u-label reveal">Get In Touch</span>
+                <div  class="u-divider reveal reveal--d1" style="margin:0 auto 1.6rem;"></div>
+                <h2   class="contact__heading reveal reveal--d2">LET'S BUILD SOMETHING REAL.</h2>
+                <p    class="contact__desc reveal reveal--d3">
+                    Built for emotion, atmosphere, and real connection through sound.<br>
+                    Available for vocal work, songwriting, production, and creative collaborations.
+                </p>
+
+                <div class="contact__services reveal reveal--d4" id="contactServices"></div>
+                <div class="contact__divider reveal reveal--d4"></div>
+
+                <div class="contact__form-wrap reveal reveal--d5">
+                    <form class="form" id="contactForm" novalidate>
+                        <div class="form__field">
+                            <input type="text" class="form__input" id="fName" placeholder=" " required autocomplete="name">
+                            <label for="fName" class="form__label">Your Name</label>
+                        </div>
+                        <div class="form__field">
+                            <input type="email" class="form__input" id="fEmail" placeholder=" " required autocomplete="email">
+                            <label for="fEmail" class="form__label">Your Email</label>
+                        </div>
+                        <div class="form__field">
+                            <select class="form__select" id="fService" required>
+                                <option value="" disabled selected>Select Service</option>
+                                <option value="Vocal Performance">Vocal Performance</option>
+                                <option value="Rap Vocals">Rap Vocals</option>
+                                <option value="Songwriting">Songwriting</option>
+                                <option value="Music Production">Music Production</option>
+                                <option value="Audio Engineering">Audio Engineering</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form__reveal" id="serviceReveal">
+                            <div class="form__field">
+                                <input type="text" class="form__input" id="fServiceCustom" placeholder=" ">
+                                <label for="fServiceCustom" class="form__label">Custom Service Request</label>
+                            </div>
+                        </div>
+                        <div class="form__field">
+                            <select class="form__select" id="fInquiry" required>
+                                <option value="" disabled selected>Select Inquiry Type</option>
+                                <option value="Collaboration">Collaboration</option>
+                                <option value="Feature Request">Feature Request</option>
+                                <option value="Business Inquiry">Business Inquiry</option>
+                                <option value="Music Inquiry">Music Inquiry</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form__reveal" id="inquiryReveal">
+                            <div class="form__field">
+                                <input type="text" class="form__input" id="fInquiryCustom" placeholder=" ">
+                                <label for="fInquiryCustom" class="form__label">Custom Inquiry Type</label>
+                            </div>
+                        </div>
+                        <div class="form__field">
+                            <textarea class="form__textarea form__input" id="fMessage" rows="4" placeholder=" " required></textarea>
+                            <label for="fMessage" class="form__label">Project Details</label>
+                        </div>
+
+                        <div class="form__submit-wrap">
+                            <button type="submit" class="form__submit" id="formSubmit">
+                                <span class="form__submit-text">
+                                    <span class="form__submit-label">Submit Inquiry</span>
+                                    <span class="form__spinner"></span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <div class="form-error" id="formError" role="alert">
+                            <span class="form-error__icon">⚠</span>
+                            <span class="form-error__text" id="formErrorText">Something went wrong. Please try again or email directly.</span>
+                        </div>
+                    </form>
+
+                    <div class="form-success" id="formSuccess" role="status">
+                        <div class="form-success__icon">
+                            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <div class="form-success__title">Inquiry Sent Successfully</div>
+                        <div class="form-success__text">
+                            Your inquiry has been sent successfully.<br>
+                            TOUFIK will reach out through email soon.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact__email-block reveal reveal--d5">
+                    <span class="contact__email-label">Or reach out directly</span>
+                    <a class="contact__email-link" id="contactEmailLink" href="mailto:contactwithtoufik@gmail.com">
+                        <span class="contact__email-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                <path d="M2 7l10 7 10-7"/>
+                            </svg>
+                        </span>
+                        <span class="contact__email-text" id="contactEmailText">contactwithtoufik@gmail.com</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <footer class="footer">
+        <div class="footer__logo" id="footerLogo">TOUFIK</div>
+        <p class="footer__copy" id="footerCopy">© 2026 TOUFIK — All Rights Reserved</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       DATA: config.js
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    const SITE_CONFIG = {
+        artistName:   'T O U F I K',
+        artistSlug:   'TOUFIK',
+        tagline:      'One Man Music Industry',
+        description:  'Independent artist crafting cinematic emotion through self-engineered sound.',
+        year:         '2026',
+        contactEmail: 'contactwithtoufik@gmail.com',
+
+        hero: {
+            type: 'css',
+            path: '', 
+            alt:  'TOUFIK'
+        },
+
+        aboutPhoto: {
+            path: 'assets/images/about-main.jpg',
+            alt:  'TOUFIK - About'
+        },
+
+        skills: [
+            'Cinematic', 'Emotional', 'Producer',
+            'Vocalist', 'Songwriter', 'Rapper', 'Self-Engineered'
+        ],
+
+        services: [
+            'Vocal Performance', 'Rap Vocals', 'Songwriting',
+            'Music Production', 'Audio Engineering'
+        ],
+
+        socialLinks: [
+            {
+                name: 'YouTube',
+                url:  'https://www.youtube.com/toufikera',
+                icon: '<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>'
+            },
+            {
+                name: 'Facebook',
+                url:  'https://www.facebook.com/toufikera',
+                icon: '<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>'
+            },
+            {
+                name: 'Instagram',
+                url:  'https://www.instagram.com/toufik_era',
+                icon: '<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>'
+            },
+            {
+                name: 'X',
+                url:  'https://www.x.com/toufikera',
+                icon: '<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>'
+            },
+            {
+                name: 'Pinterest',
+                url:  'https://www.pinterest.com/toufikera',
+                icon: '<path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12.017 24c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641 0 12.017 0z"/>'
+            },
+            {
+                name: 'SoundCloud',
+                url:  'https://www.soundcloud.com/toufikera',
+                icon: '<path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.05-.1-.1-.1m-.899.828c-.06 0-.091.037-.104.094L0 14.479l.172 1.282c.013.06.045.094.104.094.057 0 .09-.037.1-.094l.199-1.282-.199-1.332c-.01-.057-.043-.094-.1-.094m1.79-1.065c-.067 0-.12.042-.12.114l-.2 2.377.2 2.283c0 .07.053.115.12.115s.12-.045.12-.115l.227-2.283-.227-2.377c0-.072-.053-.114-.12-.114m.899-.166c-.08 0-.14.05-.14.138l-.18 2.543.18 2.318c0 .09.06.137.14.137s.138-.05.138-.137l.2-2.318-.2-2.543c0-.088-.062-.138-.138-.138m.93-.27c-.09 0-.16.06-.16.157l-.15 2.653.15 2.333c0 .1.07.16.16.16s.16-.06.16-.16l.17-2.333-.17-2.653c0-.097-.07-.157-.16-.157m.94-.098c-.1 0-.18.07-.18.178l-.13 2.593.13 2.338c0 .11.08.178.18.178s.18-.07.18-.178l.15-2.338-.15-2.593c0-.11-.08-.178-.18-.178m1.114-.263c-.11 0-.2.08-.2.196l-.12 2.677.12 2.332c.01.12.09.2.2.2s.2-.08.2-.2l.14-2.332-.14-2.677c0-.116-.09-.196-.2-.196m.87 0c-.12 0-.21.09-.22.21l-.1 2.677.1 2.322c.01.12.1.21.22.21s.21-.09.21-.21l.12-2.322-.12-2.677c-.01-.12-.1-.21-.21-.21m.94-.048c-.13 0-.22.098-.23.226l-.09 2.725.09 2.3c.01.13.1.228.23.228s.22-.098.22-.228l.1-2.3-.1-2.725c-.01-.128-.1-.226-.22-.226m.96-.042c-.14 0-.24.11-.24.243l-.08 2.633.08 2.293c0 .13.1.242.24.242s.24-.11.24-.242l.09-2.293-.09-2.633c0-.133-.1-.243-.24-.243m1.125-.384c-.14 0-.25.12-.26.255l-.05 3.02.05 2.258c.01.14.12.253.26.253s.25-.113.25-.253l.06-2.258-.06-3.02c-.01-.135-.11-.255-.25-.255m.87.193c-.15 0-.27.13-.27.27l-.04 2.556.04 2.24c0 .14.12.27.27.27s.27-.13.27-.27l.04-2.24-.04-2.556c0-.14-.12-.27-.27-.27m1.59-1.227c-.05-.006-.1-.01-.15-.01-.15 0-.29.06-.4.16-.11.1-.17.24-.17.39l-.02 3.24.02 2.204c.01.32.26.56.57.56.15 0 .29-.06.39-.16.1-.1.17-.24.17-.39V14.3l-.01-3.4c-.02-.3-.26-.54-.57-.56m4.77-.608c-.4 0-.78.08-1.13.23-.23-2.61-2.44-4.65-5.13-4.65-.69 0-1.36.14-1.97.39-.23.1-.3.2-.3.39v9.46c0 .2.16.37.36.38h8.17c1.63 0 2.95-1.33 2.95-2.96s-1.32-2.95-2.95-2.95"/>'
+            },
+            {
+                name: 'Audiomack',
+                url:  'https://www.audiomack.com/toufikera',
+                icon: '<path d="M1.01 14.39c-.55 0-1.01.44-1.01 1.01v2.2c0 .55.44 1.01 1.01 1.01s1.01-.44 1.01-1.01v-2.2c-.01-.57-.46-1.01-1.01-1.01zm3.03-2.19c-.56 0-1.01.44-1.01 1.01v5.57c0 .55.44 1.01 1.01 1.01.55 0 1.01-.44 1.01-1.01v-5.57c-.01-.57-.46-1.01-1.01-1.01zm3.03-1.6c-.56 0-1.01.44-1.01 1.01v8.77c0 .55.44 1.01 1.01 1.01.55 0 1.01-.44 1.01-1.01v-8.77c-.01-.57-.46-1.01-1.01-1.01zm3.03.6c-.56 0-1.01.44-1.01 1.01v7.57c0 .55.44 1.01 1.01 1.01.55 0 1.01-.44 1.01-1.01v-7.57c-.01-.57-.46-1.01-1.01-1.01zm3.03-4c-.56 0-1.01.44-1.01 1.01v14.56c0 .55.44 1.01 1.01 1.01.55 0 1.01-.44 1.01-1.01V8.22c-.01-.57-.46-1.01-1.01-1.01zm3.03 2c-.55 0-1.01.44-1.01 1.01v10.57c0 .55.44 1.01 1.01 1.01.55 0 1.01-.44 1.01-1.01V10.22c-.01-.57-.45-1.01-1.01-1.01zm3.03-3.4c-.55 0-1.01.44-1.01 1.01v16.96c0 .55.44 1.01 1.01 1.01.55 0 1.01-.44 1.01-1.01V6.82c-.01-.57-.46-1.01-1.01-1.01zm2.72 4.1c-.41 0-.71.3-.71.71v9.17c0 .41.3.71.71.71.41 0 .71-.3.71-.71v-9.17a.72.72 0 0 0-.71-.71z"/>'
+            }
+        ]
+    };
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       AUDIO EXPERIENCE DATA
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    const AUDIO_EXPERIENCE = [        {            id: 'farz-3d',            title: 'FARZ 3D',            subtitle: 'Immersive Spatial Audio',            audio: 'assets/audio/farz-3d.mp3'        }    ];
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       DATA: releases.js
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    const RELEASES = [        {            id:          'bas-kyu-nahi',            title:       'Bas Kyu Nahi',            type:        'Single',            date:        '2024',            featured:    true,            description: 'Some feelings stay unfinished no matter how deeply you love.',            audio:       'assets/audio/bas-kyu-nahi.mp3',            cover:       'assets/covers/bas-kyu-nahi-cover.jpg',            thumbnail:   'assets/thumbnails/bas-kyu-nahi-thumb.jpg',            video:       '',            cssFallback: 'css-warm',            platforms: [                { name: 'YouTube',    url: 'https://www.youtube.com/toufikera'    },                { name: 'SoundCloud', url: 'https://www.soundcloud.com/toufikera' },                { name: 'Audiomack',  url: 'https://www.audiomack.com/toufikera'  }            ]
+        },
+        {
+            id:          'hun-bas-tumhari',
+            title:       'Hun Bas Tumhari',
+            type:        'Single',
+            date:        '2024',
+            featured:    false,
+            description: 'A soft emotional world where love feels personal, loyal, and completely yours.',
+            audio:       'assets/audio/hun-bas-tumhari.mp3',
+            cover:       'assets/covers/hun-bas-tumhari-cover.jpg',
+            thumbnail:   'assets/thumbnails/hun-bas-tumhari-thumb.jpg',
+            video:       '',
+            cssFallback: 'css-cool',
+            platforms: [
+                { name: 'YouTube',    url: 'https://www.youtube.com/toufikera'    },
+                { name: 'SoundCloud', url: 'https://www.soundcloud.com/toufikera' },
+                { name: 'Audiomack',  url: 'https://www.audiomack.com/toufikera'  }
+            ]
+        },
+        {
+            id:          'teri-duri',
+            title:       'Teri Duri',
+            type:        'Single',
+            date:        '2024',
+            featured:    false,
+            description: 'When distance becomes louder than words and memories refuse to fade.',
+            audio:       'assets/audio/teri-duri.mp3',
+            cover:       'assets/covers/teri-duri-cover.jpg',
+            thumbnail:   'assets/thumbnails/teri-duri-thumb.jpg',
+            video:       '',
+            cssFallback: 'css-deep',
+            platforms: [
+                { name: 'YouTube',    url: 'https://www.youtube.com/toufikera'    },
+                { name: 'SoundCloud', url: 'https://www.soundcloud.com/toufikera' },
+                { name: 'Audiomack',  url: 'https://www.audiomack.com/toufikera'  }
+            ]
+        }
+    ];
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       DATA: gallery.js
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    const GALLERY_ITEMS = [        { id:'gal-1', image:'assets/images/visual-1.jpg', label:'', artClass:'art--g1' },        { id:'gal-2', image:'assets/images/visual-2.jpg', label:'', artClass:'art--g2' },        { id:'gal-3', image:'assets/images/visual-3.jpg', label:'', artClass:'art--g3' },        { id:'gal-4', image:'assets/images/visual-4.jpg', label:'', artClass:'art--g4' },        { id:'gal-5', image:'assets/images/visual-5.jpg', label:'', artClass:'art--g5' },        { id:'gal-6', image:'assets/images/visual-6.jpg', label:'', artClass:'art--g6' }    ];
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       LOGIC: script.js
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    (function () {
+        'use strict';
+
+        const COVER_MAP = {
+            'css-warm': 'art--cover-warm',
+            'css-cool': 'art--cover-cool',
+            'css-deep': 'art--cover-deep',
+            'css-dusk': 'art--cover-dusk'
+        };
+
+        const PERF = {
+            loaderMs:      2400,
+            particleCount: 15,
+            eqBarCount:    28,
+            ambientBars:   60,
+            scrollOffset:  50
+        };
+
+        function init() {
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+            }
+            
+            applyConfig();
+            renderReleases();
+            renderGallery();
+            renderAudioExperience();
+            renderSocial();
+            
+            initPreloader();
+            initParticles();
+            initNav();
+            initSmoothScroll();
+            initHeroEq();
+            initParallax();
+            initContactForm();
+            initScrollReveal(); 
+        }
+
+        function applyConfig() {
+            if (typeof SITE_CONFIG === 'undefined') return;
+            const cfg = SITE_CONFIG;
+
+            setEl('pageTitle', `${cfg.artistSlug} — ${cfg.tagline}`);
+            const desc = document.getElementById('metaDesc');
+            if (desc) desc.content = cfg.description;
+
+            setEl('heroName',     cfg.artistName);
+            setEl('heroTagline',  cfg.tagline);
+            setEl('navLogo',      cfg.artistSlug);
+            setEl('footerLogo',   cfg.artistSlug);
+            setEl('preloaderName',cfg.artistSlug);
+            setEl('footerCopy',   `© ${cfg.year} ${cfg.artistSlug} — All Rights Reserved`);
+
+            setAttr('contactEmailLink', 'href', `mailto:${cfg.contactEmail}`);
+            setEl('contactEmailText', cfg.contactEmail);
+
+            if (cfg.hero) {
+                const heroEl = document.getElementById('heroMedia');
+                if (heroEl) {
+                    let heroInner = `<div class="vis-art ${cfg.hero.cssFallback || 'art--hero'}"></div>`;
+                    if (cfg.hero.path) {
+                        if (cfg.hero.type === 'video') {
+                            heroInner += `<video src="${cfg.hero.path}" autoplay muted loop playsinline aria-hidden="true"></video>`;
+                        } else if (cfg.hero.type === 'image') {
+                            heroInner += `<img src="${cfg.hero.path}" alt="${cfg.hero.alt}" loading="lazy">`;
+                        }
+                    }
+                    heroEl.innerHTML = heroInner;
+                }
+            }
+
+            if (cfg.aboutPhoto && cfg.aboutPhoto.path) {
+                const aboutEl = document.getElementById('aboutPhoto');
+                if (aboutEl) {
+                    aboutEl.innerHTML = `
+                        <div class="vis-art art--about">
+                            <div class="light-beam" style="left:30%;top:0;height:100%;"></div>
+                            <div class="light-beam" style="left:65%;top:10%;height:80%;opacity:.5;"></div>
+                        </div>
+                        <img src="${cfg.aboutPhoto.path}" alt="${cfg.aboutPhoto.alt}" loading="lazy">
+                    `;
+                }
+            }
+
+            const tagsEl = document.getElementById('skillTags');
+            if (tagsEl) {
+                tagsEl.innerHTML = cfg.skills
+                    .map(s => `<span class="skill-tag">${s}</span>`)
+                    .join('');
+            }
+
+            const svcEl = document.getElementById('contactServices');
+            if (svcEl) {
+                svcEl.innerHTML = cfg.services
+                    .map(s => `<div class="service-pill"><span>${s}</span></div>`)
+                    .join('');
+            }
+        }
+
+        function renderReleases() {
+            if (typeof RELEASES === 'undefined') return;
+            const list = document.getElementById('releaseList');
+            if (!list) return;
+
+            list.innerHTML = RELEASES.map(r => {
+                let mediaInner = '';
+                if (r.video) {
+                    mediaInner = `<video src="${r.video}" poster="${r.thumbnail || r.cover}" autoplay loop muted playsinline></video>`;
+                } else if (r.cover) {
+                    mediaInner = `<img src="${r.cover}" alt="${r.title}" loading="lazy">`;
+                } else {
+                    mediaInner = `<div class="vis-art ${COVER_MAP[r.cssFallback] || 'art--cover-warm'}"></div>`;
+                }
+
+                const audioTag = r.audio ? `<audio class="release-audio" src="${r.audio}" preload="none"></audio>` : '';
+                const platforms = r.platforms ? r.platforms.map(p => `<a href="${p.url}" target="_blank" rel="noopener" class="platform-link">${p.name}</a>`).join('') : '';
+                const badge = r.featured ? `<div class="release-card__badge">Featured</div>` : '';
+
+                return `
+                <div class="release-card" data-id="${r.id}">
+                    <div class="release-card__cover">
+                        <div class="vis-slot">${mediaInner}</div>
+                        ${badge}
+                        <div class="release-card__watermark">${r.title.toLowerCase()}</div>
+                        <div class="release-card__play" role="button" aria-label="Play ${r.title}">
+                            <div class="release-card__play-icon"></div>
+                        </div>
+                        ${audioTag}
+                    </div>
+                    <div class="release-card__info">
+                        <div class="release-card__type">${r.type}</div>
+                        <h3 class="release-card__title">${r.title}</h3>
+                        ${r.date ? `<div class="release-card__date">${r.date}</div>` : ''}
+                        <p class="release-card__desc">${r.description}</p>
+                        <div class="release-card__platforms">${platforms}</div>
+                        <div class="release-card__wave" data-bars="50"></div>
+                    </div>
+                </div>`;
+            }).join('');
+
+            buildWaveforms();
+            initCardHovers();
+            initAudioPlayback();
+        }
+
+        function renderGallery() {
+            if (typeof GALLERY_ITEMS === 'undefined') return;
+            const grid = document.getElementById('gallery');
+            if (!grid) return;
+
+            grid.innerHTML = GALLERY_ITEMS.map(item => {
+                const content = item.image
+                    ? `<img src="${item.image}" alt="${item.label || 'Visual Experience'}" loading="lazy">`
+                    : `<div class="vis-art ${item.artClass || 'art--g1'}"></div>`;
+                
+                const labelHtml = (item.label && item.label.trim() !== '')
+                    ? `<div class="art-label"><span>${item.label}</span></div>`
+                    : '';
+
+                return `
+                <div class="gallery-item" data-id="${item.id}">
+                    <div class="vis-slot">${content}</div>
+                    ${labelHtml}
+                </div>`;
+            }).join('');
+        }
+
+        function renderAudioExperience() {
+            if (typeof AUDIO_EXPERIENCE === 'undefined') return;
+            const list = document.getElementById('audioExperienceList');
+            if (!list) return;
+
+            list.innerHTML = AUDIO_EXPERIENCE.map((item, i) => `
+                <div class="audio-exp__item reveal reveal--d${(i % 5) + 1}">
+                    ${item.title ? `<h3 class="u-title">${item.title}</h3>` : ''}
+                    ${item.subtitle ? `<p class="u-subtitle">${item.subtitle}</p>` : ''}
+                    <div class="audio-exp__wave ambient-wave-container" data-bars="60" aria-hidden="true"></div>
+                    <div class="audio-exp__orb audio-orb-btn" role="button" tabindex="0" aria-label="Play ${item.title}">
+                        <span class="audio-exp__icon">▶</span>
+                    </div>
+                    <span class="audio-exp__hint">Tap to Experience</span>
+                    ${item.audio ? `<audio class="ambient-audio-el" src="${item.audio}" preload="none"></audio>` : ''}
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.ambient-wave-container:not([data-built])').forEach(container => {
+                const count = parseInt(container.dataset.bars) || 60;
+                for (let i = 0; i < count; i++) {
+                    const bar = document.createElement('div');
+                    bar.className = 'ambient-bar';
+                    bar.style.setProperty('--ab-height', (3 + Math.random() * 35) + 'px');
+                    bar.style.setProperty('--ab-speed',  (1 + Math.random() * 2.5) + 's');
+                    bar.style.setProperty('--ab-delay',  (Math.random() * 2) + 's');
+                    container.appendChild(bar);
+                }
+                container.dataset.built = '1';
+            });
+
+            document.querySelectorAll('.audio-exp__item').forEach(item => {
+                const orb = item.querySelector('.audio-orb-btn');
+                const icon = orb.querySelector('.audio-exp__icon');
+                const audioEl = item.querySelector('.ambient-audio-el');
+
+                if (!orb || !audioEl) return;
+
+                const toggle = () => {
+                    pauseAllAudioExcept(audioEl);
+
+                    if (audioEl.paused) {
+                        audioEl.play().catch(e => console.error("Audio playback failed:", e));
+                        icon.textContent = '❚❚';
+                        orb.style.borderColor = 'var(--c-gold)';
+                        orb.style.boxShadow = '0 0 60px rgba(194,160,78,.1)';
+                    } else {
+                        audioEl.pause();
+                        icon.textContent = '▶';
+                        orb.style.borderColor = '';
+                        orb.style.boxShadow = '';
+                    }
+                };
+
+                orb.addEventListener('click', toggle);
+                orb.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') toggle(); });
+                
+                audioEl.addEventListener('ended', () => {
+                    icon.textContent = '▶';
+                    orb.style.borderColor = '';
+                    orb.style.boxShadow = '';
+                });
+            });
+        }
+
+        function renderSocial() {
+            if (typeof SITE_CONFIG === 'undefined') return;
+            const grid = document.getElementById('socialGrid');
+            if (!grid) return;
+            grid.innerHTML = SITE_CONFIG.socialLinks.map(s => `
+                <a href="${s.url}" target="_blank" rel="noopener" class="social-card">
+                    <div class="social-card__icon">
+                        <svg viewBox="0 0 24 24" aria-label="${s.name}">${s.icon}</svg>
+                    </div>
+                    <span class="social-card__name">${s.name}</span>
+                </a>`
+            ).join('');
+        }
+
+        function pauseAllAudioExcept(exceptAudio) {
+            document.querySelectorAll('audio').forEach(a => {
+                if (a !== exceptAudio) {
+                    a.pause();
+                    
+                    const relIcon = a.parentElement.querySelector('.release-card__play-icon');
+                    if (relIcon) {
+                        relIcon.style.borderStyle = 'solid';
+                        relIcon.style.borderWidth = '6px 0 6px 10px';
+                        relIcon.style.height = '0';
+                        relIcon.style.marginLeft = '2px';
+                    }
+
+                    const ambIcon = a.parentElement.querySelector('.audio-exp__icon');
+                    const ambOrb = a.parentElement.querySelector('.audio-orb-btn');
+                    if (ambIcon) ambIcon.textContent = '▶';
+                    if (ambOrb) {
+                        ambOrb.style.borderColor = '';
+                        ambOrb.style.boxShadow = '';
+                    }
+                }
+            });
+        }
+
+        function buildWaveforms() {
+            document.querySelectorAll('.release-card__wave:not([data-built])').forEach(container => {
+                const count = parseInt(container.dataset.bars) || 45;
+                for (let i = 0; i < count; i++) {
+                    const bar = document.createElement('div');
+                    bar.className = 'wave-bar';
+                    bar.style.height = (2 + Math.random() * 18) + 'px';
+                    container.appendChild(bar);
+                }
+                container.dataset.built = '1';
+            });
+        }
+
+        function initCardHovers() {
+            document.querySelectorAll('.release-card:not([data-hover])').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.querySelectorAll('.wave-bar').forEach(b => {
+                        b.style.transition = 'height .3s ease';
+                        b.style.height = (2 + Math.random() * 20) + 'px';
+                    });
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.querySelectorAll('.wave-bar').forEach(b => {
+                        b.style.height = (2 + Math.random() * 10) + 'px';
+                    });
+                });
+                card.dataset.hover = '1';
+            });
+        }
+
+        function initAudioPlayback() {
+            document.querySelectorAll('.release-card').forEach(card => {
+                const playBtn = card.querySelector('.release-card__play');
+                const audioEl = card.querySelector('.release-audio');
+                const playIcon = card.querySelector('.release-card__play-icon');
+
+                if (!playBtn || !audioEl) return;
+
+                playBtn.addEventListener('click', () => {
+                    pauseAllAudioExcept(audioEl);
+
+                    if (audioEl.paused) {
+                        audioEl.play().catch(e => console.error("Audio playback failed:", e));
+                        playIcon.style.borderStyle = 'double';
+                        playIcon.style.borderWidth = '0px 0px 0px 10px';
+                        playIcon.style.height = '12px';
+                        playIcon.style.marginLeft = '0';
+                    } else {
+                        audioEl.pause();
+                        playIcon.style.borderStyle = 'solid';
+                        playIcon.style.borderWidth = '6px 0 6px 10px';
+                        playIcon.style.height = '0';
+                        playIcon.style.marginLeft = '2px';
+                    }
+                });
+
+                audioEl.addEventListener('ended', () => {
+                    playIcon.style.borderStyle = 'solid';
+                    playIcon.style.borderWidth = '6px 0 6px 10px';
+                    playIcon.style.height = '0';
+                    playIcon.style.marginLeft = '2px';
+                });
+            });
+        }
+
+        function initPreloader() {
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    const loader = document.getElementById('preloader');
+                    if (loader) loader.classList.add('is-done');
+                }, PERF.loaderMs);
+            });
+        }
+
+        function initParticles() {
+            const layer = document.getElementById('particles');
+            if (!layer) return;
+            for (let i = 0; i < PERF.particleCount; i++) {
+                const p   = document.createElement('div');
+                p.className = 'particle';
+                const sz  = 1 + Math.random() * 1.5;
+                Object.assign(p.style, {
+                    left:   Math.random() * 100 + '%',
+                    width:  sz + 'px',
+                    height: sz + 'px',
+                    '--p-speed': (18 + Math.random() * 24) + 's',
+                    '--p-delay': (Math.random() * 18) + 's'
+                });
+                layer.appendChild(p);
+            }
+        }
+
+        function initNav() {
+            const nav     = document.getElementById('nav');
+            const burger  = document.getElementById('burger');
+            const mobileM = document.getElementById('mobileMenu');
+
+            window.addEventListener('scroll', () => {
+                if (nav) nav.classList.toggle('is-scrolled', window.scrollY > PERF.scrollOffset);
+            }, { passive: true });
+
+            if (burger && mobileM) {
+                burger.addEventListener('click', () => {
+                    const isOpen = burger.classList.toggle('is-open');
+                    mobileM.classList.toggle('is-open', isOpen);
+                    burger.setAttribute('aria-expanded', String(isOpen));
+                    document.body.style.overflow = isOpen ? 'hidden' : '';
+                });
+
+                mobileM.querySelectorAll('a').forEach(a => {
+                    a.addEventListener('click', () => {
+                        burger.classList.remove('is-open');
+                        mobileM.classList.remove('is-open');
+                        burger.setAttribute('aria-expanded', 'false');
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+        }
+
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', e => {
+                    e.preventDefault();
+                    const target = document.querySelector(a.getAttribute('href'));
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+        }
+
+        function initHeroEq() {
+            const container = document.getElementById('heroEq');
+            if (!container) return;
+            for (let i = 0; i < PERF.eqBarCount; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'eq-bar';
+                bar.style.setProperty('--eq-delay',  (Math.random() * 2) + 's');
+                bar.style.setProperty('--eq-speed',  (.6 + Math.random() * .7) + 's');
+                bar.style.setProperty('--eq-height', (4 + Math.random() * 14) + 'px');
+                container.appendChild(bar);
+            }
+        }
+
+        function initParallax() {
+            const heroBg = document.querySelector('.hero__bg');
+            if (!heroBg) return;
+            window.addEventListener('scroll', () => {
+                const y = window.scrollY;
+                if (y < window.innerHeight) {
+                    heroBg.style.transform = `translateY(${y * .08}px)`;
+                }
+            }, { passive: true });
+        }
+
+        let scrollObserver = null;
+        function initScrollReveal() {
+            if (!scrollObserver) {
+                scrollObserver = new IntersectionObserver(entries => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            e.target.classList.add('is-visible');
+                            scrollObserver.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: .07, rootMargin: '0px 0px -30px 0px' });
+            }
+            document.querySelectorAll('.reveal:not([data-observed]), .release-card:not([data-observed]), .gallery-item:not([data-observed]), .audio-exp__item:not([data-observed])')
+                .forEach(el => {
+                    scrollObserver.observe(el);
+                    el.dataset.observed = '1';
+                    el.classList.add('reveal');
+                });
+        }
+
+        function initContactForm() {
+            const form          = document.getElementById('contactForm');
+            const successEl     = document.getElementById('formSuccess');
+            const errorEl       = document.getElementById('formError');
+            const errorTextEl   = document.getElementById('formErrorText');
+            const submitBtn     = document.getElementById('formSubmit');
+
+            const fService      = document.getElementById('fService');
+            const fInquiry      = document.getElementById('fInquiry');
+            const serviceReveal = document.getElementById('serviceReveal');
+            const inquiryReveal = document.getElementById('inquiryReveal');
+            const fServiceCustom= document.getElementById('fServiceCustom');
+            const fInquiryCustom= document.getElementById('fInquiryCustom');
+
+            function handleReveal(selectEl, revealEl, customInput) {
+                const isOther = selectEl.value === 'other';
+                revealEl.classList.toggle('is-open', isOther);
+                customInput.required = isOther;
+                if (!isOther) customInput.value = '';
+                if (isOther) setTimeout(() => customInput.focus(), 380);
+            }
+            
+            if (fService && fInquiry) {
+                fService.addEventListener('change', () => handleReveal(fService, serviceReveal, fServiceCustom));
+                fInquiry.addEventListener('change', () => handleReveal(fInquiry, inquiryReveal, fInquiryCustom));
+            }
+
+            function setLoading(on) {
+                submitBtn.classList.toggle('is-loading', on);
+                submitBtn.disabled = on;
+            }
+            function showError(msg) {
+                errorTextEl.textContent = msg || 'Something went wrong. Please email directly.';
+                errorEl.classList.add('is-shown');
+                setTimeout(() => errorEl.classList.remove('is-shown'), 8000);
+            }
+            function showSuccess() {
+                form.style.display = 'none';
+                successEl.classList.add('is-shown');
+            }
+
+            if (!form) return;
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                errorEl.classList.remove('is-shown');
+
+                const name    = document.getElementById('fName').value.trim();
+                const email   = document.getElementById('fEmail').value.trim();
+                const svc     = fService.value;
+                const inq     = fInquiry.value;
+                const svcCust = fServiceCustom.value.trim();
+                const inqCust = fInquiryCustom.value.trim();
+                const message = document.getElementById('fMessage').value.trim();
+
+                if (!name)  { showError('Please enter your name.'); return; }
+                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    showError('Please enter a valid email address.'); return;
+                }
+                if (!svc)  { showError('Please select a service.'); return; }
+                if (svc === 'other' && !svcCust) { showError('Please describe your custom service.'); return; }
+                if (!inq)  { showError('Please select an inquiry type.'); return; }
+                if (inq === 'other' && !inqCust) { showError('Please describe your custom inquiry type.'); return; }
+                if (!message) { showError('Please describe your project.'); return; }
+
+                const finalService = svc === 'other' ? svcCust : svc;
+                const finalInquiry = inq === 'other' ? inqCust : inq;
+
+                setLoading(true);
+
+                try {
+                    const res = await emailjs.send(
+                        EMAILJS_CONFIG.serviceId,
+                        EMAILJS_CONFIG.templateId,
+                        {
+                            from_name:      name,
+                            from_email:     email,
+                            service_type:   finalService,
+                            inquiry_type:   finalInquiry,
+                            custom_service: svc === 'other' ? svcCust : '',
+                            custom_inquiry: inq === 'other' ? inqCust : '',
+                            message:        message
+                        }
+                    );
+
+                    if (res.status === 200) {
+                        showSuccess();
+                    } else {
+                        setLoading(false);
+                        showError(`Delivery failed (${res.status}). Please email directly.`);
+                    }
+                } catch (err) {
+                    setLoading(false);
+                    showError(err?.text ? `Error: ${err.text}` : 'Could not send. Please email directly.');
+                    console.error('[EmailJS]', err);
+                }
+            });
+        }
+
+        function setEl(id, text) {
+            const el = document.getElementById(id);
+            if (el) el.textContent = text;
+        }
+        function setAttr(id, attr, value) {
+            const el = document.getElementById(id);
+            if (el) el.setAttribute(attr, value);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+    })();
+    </script>
+</body>
+</html>
