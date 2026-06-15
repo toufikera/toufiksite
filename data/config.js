@@ -9,13 +9,10 @@ const SITE_CONFIG = {
     year:         '2026',
     contactEmail: 'contactwithtoufik@gmail.com',
 
-    /* Hero System is now fully dynamic. 
-       Change type to 'video' or 'image', and provide a path. */
     hero: {
-        type: 'video', 
-        path: 'assets/videos/hero-loop.mp4', /* e.g., 'assets/images/hero-bg.jpg' */
-        alt:  'TOUFIK Cinematic Hero',
-        cssFallback: 'art--hero' /* The underlying cinematic lighting/atmosphere */
+        type: 'css',
+        path: '', 
+        alt:  'TOUFIK'
     },
 
     aboutPhoto: {
@@ -71,3 +68,13 @@ const SITE_CONFIG = {
         }
     ]
 };
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   AUDIO EXPERIENCE DATA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+const audioExperience = [
+    {
+        title: "Farz 3D",
+        audio: "assets/audio/farz-3d.mp3"
+    }
+];
