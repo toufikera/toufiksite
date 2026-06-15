@@ -51,7 +51,6 @@
         initParallax();
         initContactForm();
         
-        // Initialize ScrollReveal AFTER DOM elements are dynamically injected
         initScrollReveal(); 
     }
 
@@ -191,14 +190,13 @@
     }
 
     function renderAudioExperience() {
-        if (typeof AUDIO_EXPERIENCE === 'undefined') return;
+        if (typeof audioExperience === 'undefined') return;
         const list = document.getElementById('audioExperienceList');
         if (!list) return;
 
-        list.innerHTML = AUDIO_EXPERIENCE.map((item, i) => `
+        list.innerHTML = audioExperience.map((item, i) => `
             <div class="audio-exp__item reveal reveal--d${(i % 5) + 1}">
-                ${item.title ? `<h3 class="u-title">${item.title}</h3>` : ''}
-                ${item.subtitle ? `<p class="u-subtitle">${item.subtitle}</p>` : ''}
+                ${item.title ? `<h3 class="u-title" style="font-size:clamp(1.4rem, 2.5vw, 2rem); letter-spacing:0.15rem; margin-bottom:0.2rem;">${item.title}</h3>` : ''}
                 <div class="audio-exp__wave ambient-wave-container" data-bars="60" aria-hidden="true"></div>
                 <div class="audio-exp__orb audio-orb-btn" role="button" tabindex="0" aria-label="Play ${item.title}">
                     <span class="audio-exp__icon">▶</span>
@@ -223,7 +221,7 @@
 
         document.querySelectorAll('.audio-exp__item').forEach(item => {
             const orb = item.querySelector('.audio-orb-btn');
-            const icon = orb.querySelector('.audio-exp__icon');
+            const icon = item.querySelector('.audio-exp__icon');
             const audioEl = item.querySelector('.ambient-audio-el');
 
             if (!orb || !audioEl) return;
