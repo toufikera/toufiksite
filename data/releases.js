@@ -12,7 +12,7 @@ const RELEASES = [
         description: 'Some feelings stay unfinished no matter how deeply you love.',
         audio:       'assets/audio/bas-kyu-nahi.mp3',
         cover:       'assets/covers/bas-kyu-nahi-cover.jpg',
-        thumbnail:   'assets/thumbnails/bas-kyu-nahi-thumb.jpg',
+        thumbnail:   'assets/thumbnails/bas-kyu-nahi-thumb.png',
         video:       '',
         cssFallback: 'css-warm',
         platforms: [
@@ -30,7 +30,7 @@ const RELEASES = [
         description: 'A soft emotional world where love feels personal, loyal, and completely yours.',
         audio:       'assets/audio/hun-bas-tumhari.mp3',
         cover:       'assets/covers/hun-bas-tumhari-cover.jpg',
-        thumbnail:   'assets/thumbnails/hun-bas-tumhari-thumb.jpg',
+        thumbnail:   'assets/thumbnails/hun-bas-tumhari-thumb.png',
         video:       '',
         cssFallback: 'css-cool',
         platforms: [
@@ -48,7 +48,7 @@ const RELEASES = [
         description: 'When distance becomes louder than words and memories refuse to fade.',
         audio:       'assets/audio/teri-duri.mp3',
         cover:       'assets/covers/teri-duri-cover.jpg',
-        thumbnail:   'assets/thumbnails/teri-duri-thumb.jpg',
+        thumbnail:   'assets/thumbnails/teri-duri-thumb.png',
         video:       '',
         cssFallback: 'css-deep',
         platforms: [
