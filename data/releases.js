@@ -16,7 +16,7 @@ const RELEASES = [
         video:       '',
         cssFallback: 'css-warm',
         platforms: [
-            { name: 'YouTube',    url: 'https://www.youtube.com/toufikera'    },
+            { name: 'YouTube',    url: 'https://www.youtube.com/@toufikera'    },
             { name: 'SoundCloud', url: 'https://www.soundcloud.com/toufikera' },
             { name: 'Audiomack',  url: 'https://www.audiomack.com/toufikera'  }
         ]
@@ -34,7 +34,7 @@ const RELEASES = [
         video:       '',
         cssFallback: 'css-cool',
         platforms: [
-            { name: 'YouTube',    url: 'https://www.youtube.com/toufikera'    },
+            { name: 'YouTube',    url: 'https://www.youtube.com/@toufikera'    },
             { name: 'SoundCloud', url: 'https://www.soundcloud.com/toufikera' },
             { name: 'Audiomack',  url: 'https://www.audiomack.com/toufikera'  }
         ]
@@ -52,7 +52,7 @@ const RELEASES = [
         video:       '',
         cssFallback: 'css-deep',
         platforms: [
-            { name: 'YouTube',    url: 'https://www.youtube.com/toufikera'    },
+            { name: 'YouTube',    url: 'https://www.youtube.com/@toufikera'    },
             { name: 'SoundCloud', url: 'https://www.soundcloud.com/toufikera' },
             { name: 'Audiomack',  url: 'https://www.audiomack.com/toufikera'  }
         ]
